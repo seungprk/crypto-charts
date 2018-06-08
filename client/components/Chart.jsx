@@ -73,10 +73,10 @@ class Chart extends React.Component {
   componentDidUpdate() {
     const dates = [];
     const prices = [];
-
-    Object.entries(this.props.data.bpi).forEach((tuple) => {
-      dates.push(tuple[0]);
-      prices.push(tuple[1]);
+    this.props.chartData.forEach((item) => {
+      const dateStr = `${item.date.getMonth()}/${item.date.getDate()}/${item.date.getFullYear()}`;
+      dates.push(dateStr);
+      prices.push(item.price);
     });
 
     this.lineChart.data.labels = dates;
@@ -99,9 +99,10 @@ class Chart extends React.Component {
 
 Chart.propTypes = {
   name: PropTypes.string.isRequired,
-  data: PropTypes.shape({
-    bpi: PropTypes.object.isRequired,
-  }).isRequired,
+  chartData: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.instanceOf(Date),
+    price: PropTypes.number,
+  })).isRequired,
 };
 
 export default Chart;
