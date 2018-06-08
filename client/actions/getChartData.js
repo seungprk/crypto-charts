@@ -1,7 +1,7 @@
 import changeChartData from './changeChartData';
 
-const getChartData = () => (
-  dispatch => fetch('https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30&aggregate=1')
+const getChartData = symbol => (
+  dispatch => fetch(`https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&limit=30&aggregate=1`)
     .then(res => res.json())
     .then((obj) => {
       const formatted = obj.Data.map((item) => {

@@ -15,7 +15,7 @@ const App = () => (
   <Provider store={store}>
     <div>
       <Header>CrypoCharts</Header>
-      <ChartContainer name="Bitcoin" />
+      <ChartContainer name="BTC" />
     </div>
   </Provider>
 );

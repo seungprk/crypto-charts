@@ -67,7 +67,7 @@ class Chart extends React.Component {
       },
     });
 
-    store.dispatch(getChartData());
+    store.dispatch(getChartData(this.props.name));
   }
 
   componentDidUpdate() {
