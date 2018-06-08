@@ -1,9 +1,12 @@
-const changeChartData = (state = { bpi: {} }, action) => {
+const changeChartData = (state = {}, action) => {
+  const modState = Object.assign({}, state);
+
   switch (action.type) {
     case 'CHANGE_CHART_DATA':
-      return action.data;
+      modState[action.symbol] = action.chartData;
+      return modState;
     default:
-      return state;
+      return modState;
   }
 };
 

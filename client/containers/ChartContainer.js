@@ -3,7 +3,7 @@ import Chart from '../components/Chart';
 
 const mapStateToProps = (state, ownProps) => ({
   name: ownProps.name,
-  data: state.chartData,
+  chartData: state.symbols[ownProps.name] || [{ date: new Date(), price: 0 }],
 });
 
 const ChartContainer = connect(mapStateToProps)(Chart);

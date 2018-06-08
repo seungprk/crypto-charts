@@ -6,6 +6,7 @@ import store from '../stores/store';
 import getChartData from '../actions/getChartData';
 
 const Card = styled.div`
+  display: inline-block;
   width: 500px;
   background: #fff;
   border-radius: 2px;
@@ -67,16 +68,16 @@ class Chart extends React.Component {
       },
     });
 
-    store.dispatch(getChartData());
+    store.dispatch(getChartData(this.props.name));
   }
 
   componentDidUpdate() {
     const dates = [];
     const prices = [];
-
-    Object.entries(this.props.data.bpi).forEach((tuple) => {
-      dates.push(tuple[0]);
-      prices.push(tuple[1]);
+    this.props.chartData.forEach((item) => {
+      const dateStr = `${item.date.getMonth()}/${item.date.getDate()}/${item.date.getFullYear()}`;
+      dates.push(dateStr);
+      prices.push(item.price);
     });
 
     this.lineChart.data.labels = dates;
@@ -90,7 +91,7 @@ class Chart extends React.Component {
         <Title>{this.props.name}</Title>
         <canvas ref={this.canvas} />
         <Links>
-          <a href="https://www.coindesk.com/price/">Powered by CoinDesk</a>
+          <a href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</a>
         </Links>
       </Card>
     );
@@ -99,9 +100,10 @@ class Chart extends React.Component {
 
 Chart.propTypes = {
   name: PropTypes.string.isRequired,
-  data: PropTypes.shape({
-    bpi: PropTypes.object.isRequired,
-  }).isRequired,
+  chartData: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.instanceOf(Date),
+    price: PropTypes.number,
+  })).isRequired,
 };
 
 export default Chart;
