@@ -6,6 +6,7 @@ import store from '../stores/store';
 import getChartData from '../actions/getChartData';
 
 const Card = styled.div`
+  display: inline-block;
   width: 500px;
   background: #fff;
   border-radius: 2px;
@@ -90,7 +91,7 @@ class Chart extends React.Component {
         <Title>{this.props.name}</Title>
         <canvas ref={this.canvas} />
         <Links>
-          <a href="https://www.coindesk.com/price/">Powered by CoinDesk</a>
+          <a href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</a>
         </Links>
       </Card>
     );
