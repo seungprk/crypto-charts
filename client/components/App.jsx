@@ -16,6 +16,7 @@ const App = () => (
     <div>
       <Header>CrypoCharts</Header>
       <ChartContainer name="BTC" />
+      <ChartContainer name="ETH" />
     </div>
   </Provider>
 );

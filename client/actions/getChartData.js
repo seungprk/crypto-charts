@@ -8,7 +8,7 @@ const getChartData = symbol => (
         const date = new Date(item.time * 1000);
         return { date, price: item.close };
       });
-      dispatch(changeChartData(formatted));
+      dispatch(changeChartData(symbol, formatted));
     })
 );
 

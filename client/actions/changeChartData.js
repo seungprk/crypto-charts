@@ -1,6 +1,7 @@
-const changeChartData = data => ({
+const changeChartData = (symbol, chartData) => ({
   type: 'CHANGE_CHART_DATA',
-  data,
+  symbol,
+  chartData,
 });
 
 export default changeChartData;
