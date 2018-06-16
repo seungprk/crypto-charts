@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Form = styled.form`
+  margin-bottom: 1rem; 
+`;
 
 class Controls extends React.Component {
   constructor(props) {
@@ -20,9 +25,9 @@ class Controls extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} >
+      <Form onSubmit={this.handleSubmit} >
         <input type="text" value={this.state.text} onChange={this.handleChange} />
-      </form>
+      </Form>
     );
   }
 }
