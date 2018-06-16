@@ -69,10 +69,18 @@ class Chart extends React.Component {
       },
     });
 
-    store.dispatch(getChartData(this.props.name));
+    if (!this.props.chartData) {
+      store.dispatch(getChartData(this.props.name));
+    } else {
+      this.updateChart();
+    }
   }
 
   componentDidUpdate() {
+    this.updateChart();
+  }
+
+  updateChart() {
     const dates = [];
     const prices = [];
     this.props.chartData.forEach((item) => {
