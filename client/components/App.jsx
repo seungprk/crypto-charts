@@ -1,7 +1,6 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import store from '../stores/store';
 import ChartContainer from '../containers/ChartContainer';
 import Controls from './Controls';
 
@@ -16,16 +15,17 @@ const Header = styled.header`
   font-size: 2em;
 `;
 
-const App = () => (
-  <Provider store={store}>
-    <Wrapper>
-      <Header>CrypoCharts</Header>
-      <Controls />
-      <ChartContainer name="BTC" />
-      <ChartContainer name="ETH" />
-    </Wrapper>
-  </Provider>
+const App = props => (
+  <Wrapper>
+    <Header>CrypoCharts</Header>
+    <Controls />
+    {props.symbols.map(symbol => <ChartContainer name={symbol} key={symbol} />)}
+  </Wrapper>
 );
+
+App.propTypes = {
+  symbols: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default App;
 
