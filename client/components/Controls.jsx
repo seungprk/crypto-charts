@@ -29,6 +29,7 @@ class Controls extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit} >
         <input type="text" value={this.state.text} onChange={this.handleChange} />
+        <button>Add Symbol</button>
       </Form>
     );
   }
