@@ -10,7 +10,8 @@ const Card = styled.div`
   width: 500px;
   background: #fff;
   border-radius: 2px;
-  margin: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
@@ -68,10 +69,18 @@ class Chart extends React.Component {
       },
     });
 
-    store.dispatch(getChartData(this.props.name));
+    if (!this.props.chartData) {
+      store.dispatch(getChartData(this.props.name));
+    } else {
+      this.updateChart();
+    }
   }
 
   componentDidUpdate() {
+    this.updateChart();
+  }
+
+  updateChart() {
     const dates = [];
     const prices = [];
     this.props.chartData.forEach((item) => {
