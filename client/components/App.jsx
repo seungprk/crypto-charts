@@ -17,7 +17,7 @@ const Header = styled.header`
 
 const App = props => (
   <Wrapper>
-    <Header>CrypoCharts</Header>
+    <Header>CryptoCharts</Header>
     <Controls />
     {props.symbols.map(symbol => <ChartContainer name={symbol} key={symbol} />)}
   </Wrapper>
