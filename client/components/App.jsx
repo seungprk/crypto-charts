@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import store from '../stores/store';
 import ChartContainer from '../containers/ChartContainer';
+import Controls from './Controls';
 
 const Header = styled.header`
   margin: 1rem;
@@ -15,6 +16,7 @@ const App = () => (
   <Provider store={store}>
     <div>
       <Header>CrypoCharts</Header>
+      <Controls />
       <ChartContainer name="BTC" />
       <ChartContainer name="ETH" />
     </div>
