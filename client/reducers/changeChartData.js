@@ -1,4 +1,4 @@
-const changeChartData = (state = {}, action) => {
+const changeChartData = (state = { BTC: [] }, action) => {
   const modState = Object.assign({}, state);
 
   switch (action.type) {
