@@ -1,9 +1,13 @@
 import changeChartData from './changeChartData';
 
 const getChartData = (symbol, startDate, endDate) => {
+  const oneDayUnix = 86400;
   const isBothDatesSet = !!(startDate && endDate);
-  const startUnix = Math.floor(Date.parse(startDate) / 1000);
-  const endUnix = endDate ? Math.floor(Date.parse(endDate) / 1000) : Math.floor(Date.now() / 1000);
+
+  const startUnix = Math.floor(Date.parse(startDate) / 1000) + oneDayUnix;
+  let endUnix = endDate ? Math.floor(Date.parse(endDate) / 1000) : Math.floor(Date.now() / 1000);
+  endUnix += oneDayUnix;
+
   const numDays = isBothDatesSet ? (endUnix - startUnix) / 60 / 60 / 24 : 30;
 
   return dispatch => fetch(`https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&toTs=${endUnix}&limit=${numDays}&aggregate=1`)
