@@ -84,7 +84,7 @@ class Chart extends React.Component {
     const dates = [];
     const prices = [];
     this.props.chartData.forEach((item) => {
-      const dateStr = `${item.date.getMonth()}/${item.date.getDate()}/${item.date.getFullYear()}`;
+      const dateStr = `${item.date.getMonth() + 1}/${item.date.getDate()}/${item.date.getFullYear()}`;
       dates.push(dateStr);
       prices.push(item.price);
     });
