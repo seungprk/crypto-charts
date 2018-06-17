@@ -27,12 +27,32 @@ const RemoveButton = styled.button`
 `;
 
 class ChartControls extends React.Component {
+  static padZeroes(int, len) {
+    let str = int.toString();
+    for (let i = str.length; i < len; i++)  {
+      str = '0' + str;
+    }
+    return str;
+  }
+
+  static dateToInputStr(dateObj) {
+    const year = ChartControls.padZeroes(dateObj.getFullYear(), 4);
+    const month = ChartControls.padZeroes(dateObj.getMonth() + 1, 2);
+    const date = ChartControls.padZeroes(dateObj.getDate(), 2);
+    return `${year}-${month}-${date}`;
+  }
+
   constructor(props) {
     super(props);
+    const oneDayJS = 86400000;
+    const today = new Date(Date.now());
+    const monthBack = new Date(today - (oneDayJS * 30));
+
     this.state = {
-      startDate: '',
-      endDate: '',
+      startDate: ChartControls.dateToInputStr(monthBack),
+      endDate: ChartControls.dateToInputStr(today),
     };
+
     this.handleChange = this.handleChange.bind(this);
   }
 
