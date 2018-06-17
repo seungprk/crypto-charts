@@ -37,10 +37,14 @@ class ChartControls extends React.Component {
   }
 
   handleChange(e) {
+    const dispatchAfterUpdate = () => {
+      store.dispatch(getChartData(this.props.name, this.state.startDate, this.state.endDate));
+    };
+
     if (e.target.id === 'startDate') {
-      this.setState({ startDate: e.target.value });
+      this.setState({ startDate: e.target.value }, dispatchAfterUpdate);
     } else if (e.target.id === 'endDate') {
-      this.setState({ endDate: e.target.value });
+      this.setState({ endDate: e.target.value }, dispatchAfterUpdate);
     }
   }
 
