@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import store from '../stores/store';
-import getChartData from '../actions/getChartData';
+import changeChartData from '../actions/changeChartData';
 
 const Form = styled.form`
   margin-bottom: 1rem; 
@@ -18,7 +18,7 @@ class Controls extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    store.dispatch(getChartData(this.state.text));
+    store.dispatch(changeChartData(this.state.text, []));
   }
 
   handleChange(e) {

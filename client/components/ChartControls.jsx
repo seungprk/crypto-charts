@@ -56,6 +56,10 @@ class ChartControls extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    store.dispatch(getChartData(this.props.name, this.state.startDate, this.state.endDate));
+  }
+
   handleChange(e) {
     const dispatchAfterUpdate = () => {
       store.dispatch(getChartData(this.props.name, this.state.startDate, this.state.endDate));
