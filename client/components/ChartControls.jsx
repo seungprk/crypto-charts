@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import store from '../stores/store';
 import getChartData from '../actions/getChartData';
+import removeChart from '../actions/removeChart';
 
 const Wrapper = styled.span`
   display: flex;
@@ -54,6 +55,7 @@ class ChartControls extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   componentDidMount() {
@@ -72,6 +74,10 @@ class ChartControls extends React.Component {
     }
   }
 
+  handleRemove() {
+    store.dispatch(removeChart(this.props.name));
+  }
+
   render() {
     return (
       <Wrapper>
@@ -80,7 +86,7 @@ class ChartControls extends React.Component {
         <Input id="endDate" type="date" value={this.state.endDate} onChange={this.handleChange} />
         <MoveButton>⇤</MoveButton>
         <MoveButton>⇥</MoveButton>
-        <RemoveButton>X</RemoveButton>
+        <RemoveButton onClick={this.handleRemove}>X</RemoveButton>
       </Wrapper>
     );
   }
