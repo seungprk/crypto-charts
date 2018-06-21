@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Chartjs from 'chart.js';
 import store from '../stores/store';
 import getChartData from '../actions/getChartData';
+import ChartControls from './ChartControls';
 
 const Card = styled.div`
   display: inline-block;
@@ -17,8 +18,7 @@ const Card = styled.div`
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 `;
 
-const Title = styled.div`
-  font-weight: bold;
+const Header = styled.div`
   margin-bottom: 1rem;
 `;
 
@@ -69,11 +69,7 @@ class Chart extends React.Component {
       },
     });
 
-    if (!this.props.chartData) {
-      store.dispatch(getChartData(this.props.name));
-    } else {
-      this.updateChart();
-    }
+    this.updateChart();
   }
 
   componentDidUpdate() {
@@ -84,7 +80,7 @@ class Chart extends React.Component {
     const dates = [];
     const prices = [];
     this.props.chartData.forEach((item) => {
-      const dateStr = `${item.date.getMonth()}/${item.date.getDate()}/${item.date.getFullYear()}`;
+      const dateStr = `${item.date.getMonth() + 1}/${item.date.getDate()}/${item.date.getFullYear()}`;
       dates.push(dateStr);
       prices.push(item.price);
     });
@@ -97,7 +93,9 @@ class Chart extends React.Component {
   render() {
     return (
       <Card>
-        <Title>{this.props.name}</Title>
+        <Header>
+          <ChartControls name={this.props.name} />
+        </Header>
         <canvas ref={this.canvas} />
         <Links>
           <a href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</a>

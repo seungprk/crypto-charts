@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
-import changeChartData from './changeChartData';
+import symbols from './symbols';
+import symbolsOrder from './symbolsOrder';
 
-const rootReducer = combineReducers({ symbols: changeChartData });
+const rootReducer = combineReducers({
+  symbols,
+  symbolsOrder,
+});
 
 export default rootReducer;
 
