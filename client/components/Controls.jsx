@@ -10,19 +10,40 @@ const Form = styled.form`
 class Controls extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: '' };
+    this.state = {
+      text: '',
+      symbolsMap: {},
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    fetch('/coinlist')
+      .then(res => res.json())
+      .then((resJson) => {
+        const symbolsMap = resJson.reduce((accum, coin) => {
+          accum[coin.name.toUpperCase()] = coin.symbol;
+          accum[coin.symbol] = coin.symbol;
+          return accum;
+        }, {});
+        this.setState({ symbolsMap });
+      });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    store.dispatch(addChart(this.state.text));
+    const symbol = this.state.symbolsMap[this.state.text.toUpperCase()];
+    if (symbol) {
+      store.dispatch(addChart(symbol));
+    } else {
+      alert('Invalid name!');
+    }
   }
 
   handleChange(e) {
-    this.setState({ text: e.target.value.toUpperCase() });
+    this.setState({ text: e.target.value });
   }
 
   render() {
