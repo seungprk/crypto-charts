@@ -17,7 +17,9 @@ const reorderChart = (state = ['BTC'], action) => {
       }
       return modState;
     case 'ADD_CHART':
-      modState.push(action.symbol);
+      if (modState.indexOf(action.symbol) === -1) {
+        modState.push(action.symbol);
+      }
       return modState;
     case 'REMOVE_CHART':
       modState.splice(symbolIndex, 1);
