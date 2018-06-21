@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import updateSymbols from './updateSymbols';
-import reorderChart from './reorderChart';
+import symbols from './symbols';
+import symbolsOrder from './symbolsOrder';
 
 const rootReducer = combineReducers({
-  symbols: updateSymbols,
-  symbolsOrder: reorderChart,
+  symbols,
+  symbolsOrder,
 });
 
 export default rootReducer;
