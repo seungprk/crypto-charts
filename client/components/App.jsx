@@ -19,12 +19,12 @@ const App = props => (
   <Wrapper>
     <Header>CryptoCharts</Header>
     <Controls />
-    {props.symbols.map(symbol => <ChartContainer name={symbol} key={symbol} />)}
+    {props.symbolsOrder.map(symbol => <ChartContainer name={symbol} key={symbol} />)}
   </Wrapper>
 );
 
 App.propTypes = {
-  symbols: PropTypes.arrayOf(PropTypes.string).isRequired,
+  symbolsOrder: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default App;

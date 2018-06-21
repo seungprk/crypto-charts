@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import store from '../stores/store';
 import getChartData from '../actions/getChartData';
 import removeChart from '../actions/removeChart';
+import reorderChart from '../actions/reorderChart';
 
 const Wrapper = styled.span`
   display: flex;
@@ -56,6 +57,7 @@ class ChartControls extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleReorder = this.handleReorder.bind(this);
   }
 
   componentDidMount() {
@@ -78,14 +80,22 @@ class ChartControls extends React.Component {
     store.dispatch(removeChart(this.props.name));
   }
 
+  handleReorder(e) {
+    if (e.target.textContent === '⇤') {
+      store.dispatch(reorderChart(this.props.name, 'left'));
+    } else if (e.target.textContent === '⇥') {
+      store.dispatch(reorderChart(this.props.name, 'right'));
+    }
+  }
+
   render() {
     return (
       <Wrapper>
         <Title>{this.props.name}</Title>
         <Input id="startDate" type="date" value={this.state.startDate} onChange={this.handleChange} />
         <Input id="endDate" type="date" value={this.state.endDate} onChange={this.handleChange} />
-        <MoveButton>⇤</MoveButton>
-        <MoveButton>⇥</MoveButton>
+        <MoveButton onClick={this.handleReorder}>⇤</MoveButton>
+        <MoveButton onClick={this.handleReorder}>⇥</MoveButton>
         <RemoveButton onClick={this.handleRemove}>X</RemoveButton>
       </Wrapper>
     );
