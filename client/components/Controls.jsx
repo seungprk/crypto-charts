@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import store from '../stores/store';
 import addChart from '../actions/addChart';
@@ -10,36 +11,25 @@ const Form = styled.form`
 class Controls extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: '',
-      symbolsMap: {},
-    };
+    this.state = { text: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-    fetch('/coinlist')
-      .then(res => res.json())
-      .then((resJson) => {
-        const symbolsMap = resJson.reduce((accum, coin) => {
-          accum[coin.name.toUpperCase()] = coin.symbol;
-          accum[coin.symbol] = coin.symbol;
-          return accum;
-        }, {});
-        this.setState({ symbolsMap });
-      });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
-    const symbol = this.state.symbolsMap[this.state.text.toUpperCase()];
-    if (symbol) {
-      store.dispatch(addChart(symbol));
-    } else {
-      alert('Invalid name!');
+    const { coinList } = this.props;
+    const text = this.state.text.toUpperCase();
+
+    for (let i = 0; i < coinList.length; i += 1) {
+      const coin = coinList[i];
+      if (coin.name.toUpperCase() === text || coin.symbol === text) {
+        store.dispatch(addChart(coin.symbol));
+        return;
+      }
     }
+    alert('Invalid name!');
   }
 
   handleChange(e) {
@@ -55,6 +45,13 @@ class Controls extends React.Component {
     );
   }
 }
+
+Controls.propTypes = {
+  coinList: PropTypes.arrayOf(PropTypes.shape({
+    symbol: PropTypes.string,
+    name: PropTypes.string,
+  })).isRequired,
+};
 
 export default Controls;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ChartContainer from '../containers/ChartContainer';
-import Controls from './Controls';
+import ControlsContainer from '../containers/ControlsContainer';
 import store from '../stores/store';
 import getCoinList from '../actions/getCoinList';
 
@@ -26,7 +26,7 @@ class App extends React.Component {
     return (
       <Wrapper>
         <Header>CryptoCharts</Header>
-        <Controls />
+        <ControlsContainer />
         {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
       </Wrapper>
     );
