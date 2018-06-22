@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Chartjs from 'chart.js';
-import store from '../stores/store';
-import getChartData from '../actions/getChartData';
 import ChartControls from './ChartControls';
 
 const Card = styled.div`
