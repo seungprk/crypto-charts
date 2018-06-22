@@ -61,12 +61,12 @@ class ChartControls extends React.Component {
   }
 
   componentDidMount() {
-    store.dispatch(getChartData(this.props.name, this.state.startDate, this.state.endDate));
+    store.dispatch(getChartData(this.props.symbol, this.state.startDate, this.state.endDate));
   }
 
   handleChange(e) {
     const dispatchAfterUpdate = () => {
-      store.dispatch(getChartData(this.props.name, this.state.startDate, this.state.endDate));
+      store.dispatch(getChartData(this.props.symbol, this.state.startDate, this.state.endDate));
     };
 
     if (e.target.id === 'startDate') {
@@ -77,21 +77,21 @@ class ChartControls extends React.Component {
   }
 
   handleRemove() {
-    store.dispatch(removeChart(this.props.name));
+    store.dispatch(removeChart(this.props.symbol));
   }
 
   handleReorder(e) {
     if (e.target.textContent === '⇤') {
-      store.dispatch(reorderChart(this.props.name, 'left'));
+      store.dispatch(reorderChart(this.props.symbol, 'left'));
     } else if (e.target.textContent === '⇥') {
-      store.dispatch(reorderChart(this.props.name, 'right'));
+      store.dispatch(reorderChart(this.props.symbol, 'right'));
     }
   }
 
   render() {
     return (
       <Wrapper>
-        <Title>{this.props.name}</Title>
+        <Title>{this.props.symbol}</Title>
         <Input id="startDate" type="date" value={this.state.startDate} onChange={this.handleChange} />
         <Input id="endDate" type="date" value={this.state.endDate} onChange={this.handleChange} />
         <MoveButton onClick={this.handleReorder}>⇤</MoveButton>
@@ -103,7 +103,7 @@ class ChartControls extends React.Component {
 }
 
 ChartControls.propTypes = {
-  name: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
 };
 
 export default ChartControls;

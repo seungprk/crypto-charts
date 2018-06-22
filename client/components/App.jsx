@@ -19,7 +19,7 @@ const App = props => (
   <Wrapper>
     <Header>CryptoCharts</Header>
     <Controls />
-    {props.symbolsOrder.map(symbol => <ChartContainer name={symbol} key={symbol} />)}
+    {props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
   </Wrapper>
 );
 

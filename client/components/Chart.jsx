@@ -39,7 +39,7 @@ class Chart extends React.Component {
       data: {
         labels: [],
         datasets: [{
-          label: this.props.name,
+          label: this.props.symbol,
           data: [],
           type: 'line',
           pointRadius: 0,
@@ -94,7 +94,7 @@ class Chart extends React.Component {
     return (
       <Card>
         <Header>
-          <ChartControls name={this.props.name} />
+          <ChartControls symbol={this.props.symbol} />
         </Header>
         <canvas ref={this.canvas} />
         <Links>
@@ -106,7 +106,7 @@ class Chart extends React.Component {
 }
 
 Chart.propTypes = {
-  name: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
   chartData: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.instanceOf(Date),
     price: PropTypes.number,
