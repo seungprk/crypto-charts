@@ -91,7 +91,7 @@ class ChartControls extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Title>{this.props.symbol}</Title>
+        <Title>{this.props.title}</Title>
         <Input id="startDate" type="date" value={this.state.startDate} onChange={this.handleChange} />
         <Input id="endDate" type="date" value={this.state.endDate} onChange={this.handleChange} />
         <MoveButton onClick={this.handleReorder}>⇤</MoveButton>
@@ -104,6 +104,7 @@ class ChartControls extends React.Component {
 
 ChartControls.propTypes = {
   symbol: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ChartControls;

@@ -92,7 +92,7 @@ class Chart extends React.Component {
     return (
       <Card>
         <Header>
-          <ChartControls symbol={this.props.symbol} />
+          <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
         </Header>
         <canvas ref={this.canvas} />
         <Links>
@@ -105,6 +105,7 @@ class Chart extends React.Component {
 
 Chart.propTypes = {
   symbol: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   chartData: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.instanceOf(Date),
     price: PropTypes.number,
