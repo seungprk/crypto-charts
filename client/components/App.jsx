@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ChartContainer from '../containers/ChartContainer';
-import Controls from './Controls';
+import ControlsContainer from '../containers/ControlsContainer';
+import store from '../stores/store';
+import getCoinList from '../actions/getCoinList';
 
 const Wrapper = styled.div`
   margin: 1rem;
@@ -15,13 +17,21 @@ const Header = styled.header`
   font-size: 2em;
 `;
 
-const App = props => (
-  <Wrapper>
-    <Header>CryptoCharts</Header>
-    <Controls />
-    {props.symbolsOrder.map(symbol => <ChartContainer name={symbol} key={symbol} />)}
-  </Wrapper>
-);
+class App extends React.Component {
+  componentDidMount() {
+    store.dispatch(getCoinList());
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <Header>CryptoCharts</Header>
+        <ControlsContainer />
+        {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
+      </Wrapper>
+    );
+  }
+}
 
 App.propTypes = {
   symbolsOrder: PropTypes.arrayOf(PropTypes.string).isRequired,

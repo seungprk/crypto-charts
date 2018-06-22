@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Chartjs from 'chart.js';
-import store from '../stores/store';
-import getChartData from '../actions/getChartData';
 import ChartControls from './ChartControls';
 
 const Card = styled.div`
@@ -39,7 +37,7 @@ class Chart extends React.Component {
       data: {
         labels: [],
         datasets: [{
-          label: this.props.name,
+          label: this.props.symbol,
           data: [],
           type: 'line',
           pointRadius: 0,
@@ -94,7 +92,7 @@ class Chart extends React.Component {
     return (
       <Card>
         <Header>
-          <ChartControls name={this.props.name} />
+          <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
         </Header>
         <canvas ref={this.canvas} />
         <Links>
@@ -106,6 +104,7 @@ class Chart extends React.Component {
 }
 
 Chart.propTypes = {
+  symbol: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   chartData: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.instanceOf(Date),
