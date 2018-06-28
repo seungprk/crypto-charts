@@ -7,7 +7,7 @@ import store from '../stores/store';
 import getCoinList from '../actions/getCoinList';
 
 const Wrapper = styled.div`
-  background-color: #c4d0ee;
+  background-color: #30364a;
 `;
 
 const Header = styled.header`
@@ -23,6 +23,10 @@ const Title = styled.span`
   font-size: 2em;
 `;
 
+const ChartLayout = styled.div`
+  margin: 0 1rem;
+`;
+
 class App extends React.Component {
   componentDidMount() {
     store.dispatch(getCoinList());
@@ -35,7 +39,9 @@ class App extends React.Component {
           <Title>CryptoCharts</Title>
           <ControlsContainer />
         </Header>
-        {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
+        <ChartLayout>
+          {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
+        </ChartLayout>
       </Wrapper>
     );
   }
