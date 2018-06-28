@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { injectGlobal } from 'styled-components';
 import store from './stores/store';
 import AppContainer from './containers/AppContainer';
+
+injectGlobal`
+  body {
+    margin: 0;
+  }
+`;
 
 ReactDOM.render(
   <Provider store={store}>

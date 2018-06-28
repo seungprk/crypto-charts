@@ -7,15 +7,16 @@ import store from '../stores/store';
 import getCoinList from '../actions/getCoinList';
 
 const Wrapper = styled.div`
-  margin: 1rem;
+  background-color: #c4d0ee;
 `;
 
 const Header = styled.header`
   display: flex;
   align-items: center;
-  margin: 1rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #30364a;
+  color: white;
 `;
 
 const Title = styled.span`
