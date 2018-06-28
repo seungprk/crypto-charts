@@ -20,11 +20,6 @@ const Header = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Links = styled.div`
-  margin-top: 1rem;
-  font-size: 0.75rem;
-`;
-
 class Chart extends React.Component {
   constructor(props) {
     super(props);
@@ -95,9 +90,6 @@ class Chart extends React.Component {
           <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
         </Header>
         <canvas ref={this.canvas} />
-        <Links>
-          <a href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</a>
-        </Links>
       </Card>
     );
   }
