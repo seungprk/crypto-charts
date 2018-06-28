@@ -28,14 +28,21 @@ const ChartLayout = styled.div`
   margin: 0 1rem;
 `;
 
+const RightLinks = styled.span`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+`;
+
 const A = styled.a`
   font-size: 0.75rem;
   color: white;
 `;
 
 const Icon = styled.img`
-  height: 1rem;
-  width: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 1rem;
 `;
 
 class App extends React.Component {
@@ -49,10 +56,12 @@ class App extends React.Component {
         <Header>
           <Title>CryptoCharts</Title>
           <ControlsContainer />
-          <a href="#">
-            <Icon src={githubIcon} alt="github icon" />
-          </a>
-          <A href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</A>
+          <RightLinks>
+            <a href="#">
+              <Icon src={githubIcon} alt="github icon" />
+            </a>
+            <A href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</A>
+          </RightLinks>
         </Header>
         <ChartLayout>
           {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
