@@ -5,7 +5,8 @@ import store from '../stores/store';
 import addChart from '../actions/addChart';
 
 const Form = styled.form`
-  margin-bottom: 1rem; 
+  display: inline-block;
+  margin-left: 1rem;
 `;
 
 class Controls extends React.Component {

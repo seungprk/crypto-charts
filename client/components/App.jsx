@@ -11,9 +11,14 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
+  display: flex;
+  align-items: center;
   margin: 1rem 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid black;
+`;
+
+const Title = styled.span`
   font-size: 2em;
 `;
 
@@ -25,8 +30,10 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Header>CryptoCharts</Header>
-        <ControlsContainer />
+        <Header>
+          <Title>CryptoCharts</Title>
+          <ControlsContainer />
+        </Header>
         {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
       </Wrapper>
     );
