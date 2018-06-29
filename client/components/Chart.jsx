@@ -5,8 +5,10 @@ import Chartjs from 'chart.js';
 import ChartControls from './ChartControls';
 
 const Card = styled.div`
+  box-sizing: border-box
   display: inline-block;
-  width: 500px;
+  width: calc(50% - 0.5rem);
+  min-width: 500px;
   background: #fff;
   border-radius: 2px;
   margin-right: 1rem;
@@ -14,15 +16,21 @@ const Card = styled.div`
   padding: 1rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-`;
 
-const Header = styled.div`
-  margin-bottom: 1rem;
-`;
+  &:nth-child(even) {
+    margin-right: 0;
+  }
 
-const Links = styled.div`
-  margin-top: 1rem;
-  font-size: 0.75rem;
+  @media (max-device-width: 800px) {
+    width: 100%;
+    margin-right: 0;
+    min-width: unset;
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-right: 0;
+    min-width: unset;
+  }
 `;
 
 class Chart extends React.Component {
@@ -91,13 +99,8 @@ class Chart extends React.Component {
   render() {
     return (
       <Card>
-        <Header>
-          <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
-        </Header>
+        <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
         <canvas ref={this.canvas} />
-        <Links>
-          <a href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</a>
-        </Links>
       </Card>
     );
   }

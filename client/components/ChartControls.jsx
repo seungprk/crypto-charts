@@ -5,27 +5,21 @@ import store from '../stores/store';
 import getChartData from '../actions/getChartData';
 import removeChart from '../actions/removeChart';
 import reorderChart from '../actions/reorderChart';
+import { Input, Button } from './styled/shared';
 
-const Wrapper = styled.span`
+const FlexWrapper = styled.div`
   display: flex;
+  margin-bottom: 1rem;
+`;
+
+const RightWrapper = styled.div`
+  display: inline-block;
+  margin-left: auto;
+  white-space: nowrap;
 `;
 
 const Title = styled.span`
   font-weight: bold;
-  margin-right: 1rem;
-`;
-
-const Input = styled.input`
-  display: inline-block;
-`;
-
-const MoveButton = styled.button`
-  display: inline-block;
-`;
-
-const RemoveButton = styled.button`
-  display: inline-block;
-  margin-left: auto;
 `;
 
 class ChartControls extends React.Component {
@@ -90,14 +84,16 @@ class ChartControls extends React.Component {
 
   render() {
     return (
-      <Wrapper>
+      <FlexWrapper>
         <Title>{this.props.title}</Title>
-        <Input id="startDate" type="date" value={this.state.startDate} onChange={this.handleChange} />
-        <Input id="endDate" type="date" value={this.state.endDate} onChange={this.handleChange} />
-        <MoveButton onClick={this.handleReorder}>⇤</MoveButton>
-        <MoveButton onClick={this.handleReorder}>⇥</MoveButton>
-        <RemoveButton onClick={this.handleRemove}>X</RemoveButton>
-      </Wrapper>
+        <RightWrapper>
+          <Input id="startDate" type="date" value={this.state.startDate} onChange={this.handleChange} />
+          <Input id="endDate" type="date" value={this.state.endDate} onChange={this.handleChange} />
+          <Button onClick={this.handleReorder}>⇤</Button>
+          <Button onClick={this.handleReorder}>⇥</Button>
+          <Button onClick={this.handleRemove}>X</Button>
+        </RightWrapper>
+      </FlexWrapper>
     );
   }
 }

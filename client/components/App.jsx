@@ -5,16 +5,48 @@ import ChartContainer from '../containers/ChartContainer';
 import ControlsContainer from '../containers/ControlsContainer';
 import store from '../stores/store';
 import getCoinList from '../actions/getCoinList';
+import githubIcon from '../github.svg';
 
 const Wrapper = styled.div`
-  margin: 1rem;
+  background-color: #30364a;
 `;
 
 const Header = styled.header`
-  margin: 1rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #30364a;
+  color: white;
+`;
+
+const Title = styled.span`
   font-size: 2em;
+`;
+
+const ChartLayout = styled.div`
+  margin: 0 1rem;
+`;
+
+const RightLinks = styled.span`
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+`;
+
+const A = styled.a`
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+`;
+
+const Icon = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 0 1rem;
+  vertical-align: middle;
 `;
 
 class App extends React.Component {
@@ -25,9 +57,19 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Header>CryptoCharts</Header>
-        <ControlsContainer />
-        {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
+        <Header>
+          <Title>CryptoCharts</Title>
+          <ControlsContainer />
+          <RightLinks>
+            <a href="https://github.com/seungprk/crypto-charts">
+              <Icon src={githubIcon} alt="github icon" />
+            </a>
+            <A href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</A>
+          </RightLinks>
+        </Header>
+        <ChartLayout>
+          {this.props.symbolsOrder.map(symbol => <ChartContainer symbol={symbol} key={symbol} />)}
+        </ChartLayout>
       </Wrapper>
     );
   }

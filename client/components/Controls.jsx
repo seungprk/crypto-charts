@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import store from '../stores/store';
 import addChart from '../actions/addChart';
+import { Input, Button } from './styled/shared';
 
 const Form = styled.form`
-  margin-bottom: 1rem; 
+  display: inline-block;
+  margin-left: 1rem;
 `;
 
 class Controls extends React.Component {
@@ -39,8 +41,7 @@ class Controls extends React.Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit} >
-        <input type="text" value={this.state.text} onChange={this.handleChange} />
-        <button>Add Symbol</button>
+        <Input type="text" placeholder="Add Cryptocurrency" value={this.state.text} onChange={this.handleChange} />
       </Form>
     );
   }
