@@ -5,8 +5,10 @@ import Chartjs from 'chart.js';
 import ChartControls from './ChartControls';
 
 const Card = styled.div`
+  box-sizing: border-box
   display: inline-block;
-  width: 550px;
+  width: calc(50% - 0.5rem);
+  min-width: 500px;
   background: #fff;
   border-radius: 2px;
   margin-right: 1rem;
@@ -14,6 +16,21 @@ const Card = styled.div`
   padding: 1rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  &:nth-child(even) {
+    margin-right: 0;
+  }
+
+  @media (max-device-width: 800px) {
+    width: 100%;
+    margin-right: 0;
+    min-width: unset;
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-right: 0;
+    min-width: unset;
+  }
 `;
 
 class Chart extends React.Component {

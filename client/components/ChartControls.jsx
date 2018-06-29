@@ -13,12 +13,13 @@ const FlexWrapper = styled.div`
 `;
 
 const RightWrapper = styled.div`
+  display: inline-block;
   margin-left: auto;
+  white-space: nowrap;
 `;
 
 const Title = styled.span`
   font-weight: bold;
-  margin-right: 1rem;
 `;
 
 class ChartControls extends React.Component {
