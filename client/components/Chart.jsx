@@ -6,7 +6,7 @@ import ChartControls from './ChartControls';
 
 const Card = styled.div`
   display: inline-block;
-  width: 500px;
+  width: 550px;
   background: #fff;
   border-radius: 2px;
   margin-right: 1rem;
@@ -14,10 +14,6 @@ const Card = styled.div`
   padding: 1rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-`;
-
-const Header = styled.div`
-  margin-bottom: 1rem;
 `;
 
 class Chart extends React.Component {
@@ -86,9 +82,7 @@ class Chart extends React.Component {
   render() {
     return (
       <Card>
-        <Header>
-          <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
-        </Header>
+        <ChartControls title={`${this.props.name} (${this.props.symbol})`} symbol={this.props.symbol} />
         <canvas ref={this.canvas} />
       </Card>
     );
