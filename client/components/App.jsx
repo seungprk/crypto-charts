@@ -13,15 +13,17 @@ const Wrapper = styled.div`
 
 const Header = styled.header`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 1rem;
-  margin-bottom: 1rem;
   background-color: #30364a;
   color: white;
 `;
 
 const Title = styled.span`
   font-size: 2em;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const ChartLayout = styled.div`
@@ -32,10 +34,16 @@ const RightLinks = styled.span`
   display: flex;
   align-items: center;
   margin-left: auto;
+  margin-bottom: 1rem;
+
+  @media (max-width: 800px) {
+    margin-left: 0;
+  }
 `;
 
 const A = styled.a`
   color: white;
+  font-size: 0.75rem;
 
   &:visited {
     color: white;
@@ -45,7 +53,7 @@ const A = styled.a`
 const Icon = styled.img`
   height: 1.5rem;
   width: 1.5rem;
-  margin: 0 1rem;
+  margin-right: 1rem;
   vertical-align: middle;
 `;
 
@@ -64,7 +72,7 @@ class App extends React.Component {
             <a href="https://github.com/seungprk/crypto-charts">
               <Icon src={githubIcon} alt="github icon" />
             </a>
-            <A href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CrytpoCompare</A>
+            <A href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CryptoCompare</A>
           </RightLinks>
         </Header>
         <ChartLayout>
