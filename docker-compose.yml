@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  crypto-charts:
+    build: .
+    ports:
+      - '80:3000'
+
