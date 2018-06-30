@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "docker": "npm run build:prod && node server.js",
     "start:dev": "npm run build & node server.js",
-    "build": "webpack --mode development --watch"
+    "build": "webpack --mode development --watch",
+    "build:prod": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
