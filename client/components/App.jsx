@@ -41,13 +41,30 @@ const RightLinks = styled.span`
   }
 `;
 
-const A = styled.a`
+const LinkText = styled.span`
+  vertical-align: middle;
+  margin-right: 0.5rem;
   color: white;
-  font-size: 0.75rem;
 
   &:visited {
     color: white;
   }
+`;
+
+const Link = styled.a`
+  color: white;
+  white-space: nowrap;
+
+  &:visited {
+    color: white;
+  }
+`;
+
+const AttribLink = Link.extend`
+  margin-left: 1rem;
+  white-space: unset;
+  text-decoration: none;
+  font-size: 0.75rem;
 `;
 
 const Icon = styled.img`
@@ -69,10 +86,11 @@ class App extends React.Component {
           <Title>CryptoCharts</Title>
           <ControlsContainer />
           <RightLinks>
-            <a href="https://github.com/seungprk/crypto-charts">
+            <Link href="https://github.com/seungprk/crypto-charts">
+              <LinkText>Github Source</LinkText>
               <Icon src={githubIcon} alt="github icon" />
-            </a>
-            <A href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CryptoCompare</A>
+            </Link>
+            <AttribLink href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CryptoCompare</AttribLink>
           </RightLinks>
         </Header>
         <ChartLayout>
