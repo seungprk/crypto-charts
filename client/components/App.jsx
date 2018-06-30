@@ -86,7 +86,7 @@ class App extends React.Component {
           <Title>CryptoCharts</Title>
           <ControlsContainer />
           <RightLinks>
-            <Link href="https://github.com/seungprk/crypto-charts">
+            <Link href="https://github.com/seungprk/crypto-charts" target="_blank" rel="noopener noreferrer">
               <LinkText>Github Source</LinkText>
               <Icon src={githubIcon} alt="github icon" />
             </Link>
