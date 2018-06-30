@@ -7,7 +7,6 @@ import { Input, Button } from './styled/shared';
 
 const Form = styled.form`
   display: inline-block;
-  margin-left: 1rem;
 `;
 
 class Controls extends React.Component {

@@ -5,7 +5,8 @@ const Input = styled.input`
   padding: 0.15rem;
   border: 2px inset lightgray;
   border-radius: 3px;
-  margin-left: 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const Button = styled.button`

@@ -21,12 +21,7 @@ const Card = styled.div`
     margin-right: 0;
   }
 
-  @media (max-device-width: 800px) {
-    width: 100%;
-    margin-right: 0;
-    min-width: unset;
-  }
-  @media (max-width: 800px) {
+  @media (max-width: 1024px) {
     width: 100%;
     margin-right: 0;
     min-width: unset;
@@ -52,11 +47,20 @@ class Chart extends React.Component {
           fill: false,
           lineTension: 0,
           borderWidth: 2,
+          borderColor: '#5886af',
         }],
       },
       options: {
         legend: {
           display: false,
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+          displayColors: false,
+          callbacks: {
+            label: tooltipItem => `$${tooltipItem.yLabel.toLocaleString()}`,
+          },
         },
         scales: {
           xAxes: [{
@@ -69,6 +73,9 @@ class Chart extends React.Component {
             scaleLabel: {
               display: true,
               labelString: 'Closing price ($)',
+            },
+            ticks: {
+              callback: value => `$${value.toLocaleString()}`,
             },
           }],
         },
