@@ -2,7 +2,7 @@
 Customizable Dashboard for Cryptocurrencies created using Reactjs and Chartjs
 
 ## Getting Started
-Node version 8.11 is recommended.
+Node version 8.11 was used for this project and so version 8.11 or later is recommended.
 
 ### Installing
 The app is deployed at the link indicated in the repo description. To run the project on your own machine, clone the repo and run `npm install`, followed by `npm run build & npm start` to build the bundle and start the server.
