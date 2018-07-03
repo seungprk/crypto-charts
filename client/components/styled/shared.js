@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   display: inline-block;
-  padding: 0.15rem;
+  padding: 0 0.25rem;
   border: 2px inset lightgray;
   border-radius: 3px;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  background-color: white;
+  height: 2em;
 `;
 
 const Button = styled.button`
@@ -15,6 +17,7 @@ const Button = styled.button`
   border-radius: 2px;
   background-color: lightgray;
   margin-left: 0.5rem;
+  height: 2em;
 `;
 
 export { Input, Button };
