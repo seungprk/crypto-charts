@@ -71,7 +71,7 @@ const Header = () => (
         <LinkText>Github Source</LinkText>
         <Icon src={githubIcon} alt="github icon" />
       </Link>
-      <AttribLink href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Powered by CryptoCompare</AttribLink>
+      <AttribLink href="https://www.cryptocompare.com/" target="_blank" rel="noopener noreferrer">Data from CryptoCompare</AttribLink>
     </RightLinks>
   </Wrapper>
 );
