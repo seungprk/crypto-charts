@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   display: inline-block;
-  padding: 0 0.25rem;
+  padding: 0.25rem;
   border: 2px inset lightgray;
   border-radius: 3px;
   margin-right: 1rem;
   margin-bottom: 1rem;
   background-color: white;
-  height: 2em;
 `;
 
 const Button = styled.button`
