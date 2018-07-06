@@ -20,6 +20,8 @@ class Controls extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ text: '' });
+
     const { coinList } = this.props;
     const text = this.state.text.toUpperCase();
 
